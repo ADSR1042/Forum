@@ -6,7 +6,7 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const WebpackChunkHash = require("webpack-chunk-hash");
 const fs = require("fs/promises");
@@ -26,18 +26,7 @@ const config = (async () => ({
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true,
-              },
-            },
-            "sass-loader",
-          ],
-        }),
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
@@ -141,9 +130,11 @@ const config = (async () => ({
         to: "static/reset.html",
       },
     ]),
-    new ExtractTextPlugin("static/content/[name]-[chunkhash:8].css"),
+    new MiniCssExtractPlugin({
+      filename: "static/content/[name]-[chunkhash:8].css",
+    }),
     new WebpackChunkHash({ algorithm: "md5" }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
   ],
   optimization: {
     minimizer: [
