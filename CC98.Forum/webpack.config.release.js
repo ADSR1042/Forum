@@ -8,7 +8,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const WebpackChunkHash = require("webpack-chunk-hash");
 const fs = require("fs/promises");
 const { minify } = require("html-minifier-terser");
 const minifyOptions = {
@@ -26,7 +25,16 @@ const config = (async () => ({
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
@@ -133,7 +141,6 @@ const config = (async () => ({
     new MiniCssExtractPlugin({
       filename: "static/content/[name]-[chunkhash:8].css",
     }),
-    new WebpackChunkHash({ algorithm: "md5" }),
     new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
   ],
   optimization: {
