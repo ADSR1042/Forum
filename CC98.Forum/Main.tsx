@@ -14,8 +14,8 @@ import App from "./Components/App";
 import ErrorBoundary from "./Components/ErrorBoundary";
 import { IndexedDB } from "./IndexedDB/IndexedDB";
 import { shouldUseIndexedDb } from "./config";
-import zh_CN from "antd/lib/locale-provider/zh_CN";
-import { LocaleProvider } from "antd";
+import zh_CN from "antd/locale/zh_CN";
+import { ConfigProvider } from "antd";
 import moment from "moment";
 moment.locale("zh-cn");
 /**
@@ -23,7 +23,9 @@ moment.locale("zh-cn");
  */
 async function initialize() {
   await Constants.loadConfig();
-  if (shouldUseIndexedDb) await IndexedDB.start();
+  if (shouldUseIndexedDb) {
+    await IndexedDB.start();
+  }
 
   // 输出一些没用的东西
   // console.info('%c       ', 'font-size: 100px; background: url(http://cdn.nyanit.com/nyan2.gif) no-repeat;');
@@ -33,9 +35,9 @@ async function initialize() {
   ReactDOM.render(
     <ErrorBoundary>
       <Provider store={store}>
-        <LocaleProvider locale={zh_CN}>
+        <ConfigProvider locale={zh_CN}>
           <App />
-        </LocaleProvider>
+        </ConfigProvider>
       </Provider>
     </ErrorBoundary>,
     document.getElementById("root")

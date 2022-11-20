@@ -7,4 +7,5 @@
 /**
  * 是否启用indexedDb
  */
-export const shouldUseIndexedDb = !!window.indexedDB && navigator.userAgent.indexOf('MSIE') === -1;
+export const shouldUseIndexedDb =
+  !!window.indexedDB && navigator.userAgent.indexOf("MSIE") === -1;
