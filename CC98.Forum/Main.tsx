@@ -1,12 +1,8 @@
-﻿import "es6-promise/auto";
-import "core-js/shim";
+﻿import "core-js/shim";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as $ from "jquery";
 import store from "./Store";
 import { Provider } from "react-redux";
-import "whatwg-fetch";
-import "blueimp-canvas-to-blob";
 import { initWatermark } from "spatial-watermark";
 
 import { Constants } from "./Components/Constant";
@@ -44,8 +40,10 @@ async function initialize() {
   );
 
   if (process.env.NODE_ENV === "development") {
-    const { whyDidYouUpdate } = require("why-did-you-update");
-    //	whyDidYouUpdate(React);
+    const whyDidYouRender = (
+      await import("@welldone-software/why-did-you-render")
+    ).default;
+    whyDidYouRender(React);
   } else {
     initWatermark();
   }
