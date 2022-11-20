@@ -1,12 +1,12 @@
-﻿import * as React from 'react';
-import * as Utility from '../../Utility';
-import { Pager } from '../Pager';
-import { RouteComponent } from '../RouteComponent';
-import { SendTopic } from './Topic-SendTopic';
-import { Reply } from './Topic-Reply';
-import { TopicInfo } from './Topic-TopicInfo';
-import { Category } from './Topic-Category';
-export const QuoteTraceContext = React.createContext(context => { });
+﻿import * as React from "react";
+import * as Utility from "../../Utility";
+import { Pager } from "../Pager";
+import { RouteComponent } from "../RouteComponent";
+import { SendTopic } from "./Topic-SendTopic";
+import { Reply } from "./Topic-Reply";
+import { TopicInfo } from "./Topic-TopicInfo";
+import { Category } from "./Topic-Category";
+export const QuoteTraceContext = React.createContext((context) => {});
 export class CurUserPost extends RouteComponent<
   { history },
   {
@@ -21,8 +21,8 @@ export class CurUserPost extends RouteComponent<
     postId;
     quote;
   },
-  { topicId; page; postId, userId }
-  > {
+  { topicId; page; postId; userId }
+> {
   constructor(props, context) {
     super(props, context);
     this.quote = this.quote.bind(this);
@@ -35,19 +35,19 @@ export class CurUserPost extends RouteComponent<
       postId: this.match.params.postId,
       topicInfo: { replyCount: 0 },
       boardInfo: { masters: [], id: 7 },
-      content: '',
+      content: "",
       shouldRender: false,
       isFav: false,
-      quote: ''
+      quote: "",
     };
   }
-  handleQuoteContextChange = context => {
-    console.log('传进topic.tsx');
+  handleQuoteContextChange = (context) => {
+    console.log("传进topic.tsx");
     console.log(context);
     this.setState({ quote: context });
   };
   quote(content, userName, replyTime, floor, postId) {
-    const y = $('#sendTopicInfo').offset().top;
+    const y = $("#sendTopicInfo").offset().top;
     let page = this.state.page;
     if (!this.state.page) page = 1;
     const url = `#sendTopicInfo`;
@@ -58,12 +58,12 @@ export class CurUserPost extends RouteComponent<
         userName: userName,
         replyTime: replyTime,
         floor: floor,
-        postId: postId
-      }
+        postId: postId,
+      },
     });
   }
   async handleChange() {
-    console.log('handle')
+    console.log("handle");
     //const postInfo = await Utility.getPostInfo(this.match.params.postId);
     const userId = this.match.params.userId;
     const postId = this.match.params.postId;
@@ -82,7 +82,7 @@ export class CurUserPost extends RouteComponent<
       page: page,
       topicId: this.match.params.topicId,
       totalPage: totalPage,
-      topicInfo: topicInfo
+      topicInfo: topicInfo,
     });
   }
   async componentWillReceiveProps(newProps) {
@@ -93,7 +93,7 @@ export class CurUserPost extends RouteComponent<
       page = parseInt(newProps.match.params.page);
     }
     if (page != this.match.params.page) {
-      console.log('will')
+      console.log("will");
       const userId = newProps.match.params.userId;
       const postId = newProps.match.params.postId;
       // const postInfo = await Utility.getPostInfo(this.match.params.postId);
@@ -112,7 +112,7 @@ export class CurUserPost extends RouteComponent<
         postId: newProps.match.params.postId,
         topicInfo: topicInfo,
         boardInfo: boardInfo,
-        isFav: isFav
+        isFav: isFav,
       });
     }
   }
@@ -124,7 +124,7 @@ export class CurUserPost extends RouteComponent<
     }
   }
   async componentDidMount() {
-    console.log('did')
+    console.log("did");
     const postId = this.match.params.postId;
     let page: number;
     if (!this.match.params.page) {
@@ -139,17 +139,17 @@ export class CurUserPost extends RouteComponent<
       this.match.params.topicId,
       postId
     );
-    console.log('totalpage=' + totalPage);
+    console.log("totalpage=" + totalPage);
     this.setState({
       page: page,
       topicId: this.match.params.topicId,
       totalPage: totalPage,
       topicInfo: topicInfo,
-      boardInfo: boardInfo
+      boardInfo: boardInfo,
     });
   }
   async getTotalPage(topicId, postId) {
-    console.log(postId)
+    console.log(postId);
     const topicInfo = await Utility.getTopicInfo(topicId);
     const isAnonymous = topicInfo.isAnonymous;
     if (isAnonymous) {
@@ -160,18 +160,16 @@ export class CurUserPost extends RouteComponent<
   }
 
   render() {
-    const url = `/topic/${this.match.params.topicId}/postId/${
-      this.match.params.postId
-      }/`;
+    const url = `/topic/${this.match.params.topicId}/postId/${this.match.params.postId}/`;
     const pagerUrl = `/topic/${this.state.topicId}/`;
     return (
-      <div className="center" style={{ width: '1140px' }}>
+      <div className="center" style={{ width: "1140px" }}>
         <div
           className="row"
           style={{
-            width: '100%',
-            justifyContent: 'space-between',
-            alignItems: 'center'
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
           <Category
@@ -207,10 +205,10 @@ export class CurUserPost extends RouteComponent<
         <div
           className="row"
           style={{
-            width: '100%',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginTop: '1rem'
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "1rem",
           }}
         >
           <Category

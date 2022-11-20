@@ -15,7 +15,6 @@ export class FocusUserArea extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <FocusTopicArea id={-1} name="关注用户" />

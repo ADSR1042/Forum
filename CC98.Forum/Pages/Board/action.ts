@@ -1,8 +1,8 @@
 import {
   getToken,
   formAuthorizeHeader,
-  cc98Fetch
-} from '../../Utility/fetchUtility';
+  cc98Fetch,
+} from "../../Utility/fetchUtility";
 
 export async function getBoardInfo(boardId: string) {
   const headers = await formAuthorizeHeader();
@@ -10,13 +10,13 @@ export async function getBoardInfo(boardId: string) {
   const response = await cc98Fetch(url, { headers });
   switch (response.status) {
     case 404:
-      return 'not found';
+      return "not found";
     case 500:
-      return 'server error';
+      return "server error";
   }
   const data = await response.json();
   if (data.canEntry === false) {
-    return 'unauthorized';
+    return "unauthorized";
   }
   return data;
 }
@@ -46,7 +46,7 @@ export async function getTagTopics(
   tag2: number
 ) {
   const from = (parseInt(page) - 1) * 20;
-  let query = '';
+  let query = "";
   if (tag1 !== -1) {
     query += `tag1=${tag1}&`;
   }
@@ -63,9 +63,9 @@ export async function getTopTopics(boardId: number) {
   const response = await cc98Fetch(url, { headers });
   switch (response.status) {
     case 404:
-      return 'not found';
+      return "not found";
     case 500:
-      return 'server error';
+      return "server error";
   }
   const data = await response.json();
   return data;
@@ -77,9 +77,9 @@ export async function getShortTopic(topicId: number) {
   const response = await cc98Fetch(url, { headers });
   switch (response.status) {
     case 404:
-      return 'not found';
+      return "not found";
     case 500:
-      return 'server error';
+      return "server error";
   }
   const data = await response.json();
   return data;
@@ -90,9 +90,9 @@ export async function getTopics(url: string) {
   const response = await cc98Fetch(url, { headers });
   switch (response.status) {
     case 404:
-      return 'not found';
+      return "not found";
     case 500:
-      return 'server error';
+      return "server error";
   }
   const data = await response.json();
   return data;
@@ -108,12 +108,12 @@ export async function getTags(boardId: number) {
 
 export async function multiDelete(topicIds: number[], reason: string) {
   const headers = await formAuthorizeHeader();
-  headers.append('Content-Type', 'application/json')
-  let query = 'id=';
-  query += topicIds.join('&id=');
+  headers.append("Content-Type", "application/json");
+  let query = "id=";
+  query += topicIds.join("&id=");
   const url = `/topic/multi-delete?${query}`;
   const body = JSON.stringify({ reason });
-  const response = await cc98Fetch(url, { method: 'PUT', headers, body });
+  const response = await cc98Fetch(url, { method: "PUT", headers, body });
   return response;
 }
 
@@ -123,12 +123,12 @@ export async function multiLock(
   value: number
 ) {
   const headers = await formAuthorizeHeader();
-  let query = 'id=';
-  query += topicIds.join('&id=');
+  let query = "id=";
+  query += topicIds.join("&id=");
   const url = `/topic/multi-lock?${query}`;
   const body = JSON.stringify({ reason, value });
-  headers.append('Content-Type', 'application/json')
-  const response = await cc98Fetch(url, { method: 'PUT', headers, body });
+  headers.append("Content-Type", "application/json");
+  const response = await cc98Fetch(url, { method: "PUT", headers, body });
   return response;
 }
 
@@ -142,8 +142,8 @@ export async function getBoardRecords(boardId: string, from: number) {
 export async function editBigPaper(boardId: string, content: string) {
   const url = `/board/${boardId}/big-paper`;
   let headers = await formAuthorizeHeader();
-  headers.append('Content-Type', 'application/json');
+  headers.append("Content-Type", "application/json");
   const body = JSON.stringify({ content });
-  const response = await cc98Fetch(url, { method: 'PUT', headers, body });
+  const response = await cc98Fetch(url, { method: "PUT", headers, body });
   return response;
 }

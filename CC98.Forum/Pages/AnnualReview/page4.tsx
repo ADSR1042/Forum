@@ -6,7 +6,6 @@ import "moment/locale/zh-cn";
 moment.locale("zh-cn");
 
 export default class extends React.Component<{ data }> {
-
   getBoardUrlById(boardId) {
     return "/board/" + boardId;
   }
@@ -14,7 +13,7 @@ export default class extends React.Component<{ data }> {
   render() {
     const { data } = this.props;
     //最爱发言的版面
-    let boards = null
+    let boards = null;
     if (data.board1 || data.board2 || data.board3) {
       boards = (
         <>
@@ -46,21 +45,20 @@ export default class extends React.Component<{ data }> {
           </div>
         </>
       );
-    }
-    else {
+    } else {
       boards = (
         <>
           <div>你在过去的一年中没有发言，</div>
           <div>新的一年要加油哦~</div>
         </>
-      )
+      );
     }
-   
+
     return (
       <div className="annual-review-2020-page annual-review-2020-page-bg-rabbit">
         {boards}
         {data.latestPostTime && (
-          <div style={{ marginTop: '1rem' }}>
+          <div style={{ marginTop: "1rem" }}>
             在{" "}
             <span className="annual-review-page2-hotTopicCount">
               {moment(data.latestPostTime).format("LL")}

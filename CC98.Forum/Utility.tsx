@@ -3045,7 +3045,7 @@ export async function readAll() {
 export function noticeMessageShow(id: string) {
   $(`#${id}`).removeClass("displaynone");
   $(`#${id}`).removeClass("noticeDisplaynone");
-  setTimeout(function() {
+  setTimeout(function () {
     $(`#${id}`).addClass("noticeDisplaynone");
   }, 1);
 }
@@ -3264,7 +3264,7 @@ export const pDebounce = (fn, wait, options: any = {}) => {
   let timer;
   let resolveList = [];
 
-  return function(...arguments_) {
+  return function (...arguments_) {
     return new Promise((resolve) => {
       const runImmediately = options.leading && !timer;
 

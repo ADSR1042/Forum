@@ -1,14 +1,8 @@
 {
-    "fileExtendedNames": {
-        "video": [
-            
-        ],
-        "audio": [
-            
-        ],
-        "image": [
-            
-        ]
-    },
-    "shouldNotSelect": ["img", "video", "audio", "upload", "bili"]
+  "fileExtendedNames": {
+    "video": [],
+    "audio": [],
+    "image": []
+  },
+  "shouldNotSelect": ["img", "video", "audio", "upload", "bili"]
 }

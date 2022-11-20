@@ -12,7 +12,7 @@ import {
   Guide,
   Shape,
   Facet,
-  Util
+  Util,
 } from "bizcharts";
 
 export default class extends React.Component<{ data }> {
@@ -55,12 +55,12 @@ export default class extends React.Component<{ data }> {
       { time: "上午", posts: data.postCount612 },
       { time: "下午", posts: data.postCount1218 },
       { time: "晚上", posts: data.postCount1824 },
-      { time: "深夜", posts: data.postCount06 }
+      { time: "深夜", posts: data.postCount06 },
     ];
     const cols = {
       posts: {
-        alias: "帖数"
-      }
+        alias: "帖数",
+      },
     };
     return (
       <div className="annual-review-2020-page annual-review-2020-page-bg-cat">
@@ -86,7 +86,7 @@ export default class extends React.Component<{ data }> {
             <Axis name="posts" />
             <Tooltip
               crosshairs={{
-                type: "y"
+                type: "y",
               }}
             />
             <Geom type="interval" position="time*posts" />

@@ -1,6 +1,6 @@
 ﻿import * as React from "react";
 import * as Utility from "../../Utility";
-import  AwardInfo  from "./Topic-AwardInfo";
+import AwardInfo from "./Topic-AwardInfo";
 import { RouteComponent } from "../RouteComponent";
 import { PostManagement } from "./Topic-PostManagement";
 import { UbbContainer } from "../UbbContainer";
@@ -79,7 +79,7 @@ export class ReplyContent extends React.Component<
       extensions: [showdownExtension],
     });
     converter.setOption("tables", true);
-    converter.setOption("strikethrough", true)
+    converter.setOption("strikethrough", true);
     const html = converter.makeHtml(parseContent);
     if (document.getElementById(domId)) {
       document.getElementById(domId).innerHTML = html;
@@ -174,7 +174,8 @@ export class ReplyContent extends React.Component<
           }}
         >
           {this.props.topicInfo.isAnonymous &&
-            this.props.topicInfo.todayCount > 3 && this.props.floor === 1 && (
+            this.props.topicInfo.todayCount > 3 &&
+            this.props.floor === 1 && (
               <Tag>
                 该用户今日在本版发布了{this.props.topicInfo.todayCount}个主题帖
               </Tag>

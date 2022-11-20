@@ -103,7 +103,9 @@ class MyPosts extends React.Component<Props> {
         <Pager
           currentPage={curPage}
           totalPage={totalPage}
-          href={`/usercenter/myposts/ishot/${Number(this.props.match.params.ishot)}/`}
+          href={`/usercenter/myposts/ishot/${Number(
+            this.props.match.params.ishot
+          )}/`}
           hasTotal={this.props.hasTotal}
         />
       </div>

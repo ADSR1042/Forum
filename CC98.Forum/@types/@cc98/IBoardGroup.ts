@@ -1,24 +1,24 @@
-declare module '@cc98/api' {
+declare module "@cc98/api" {
   export interface IBoardGroup {
     /**
      * 版面id
      */
-    id: number
+    id: number;
     /**
      * 主管
      */
-    masters: string[]
+    masters: string[];
     /**
      * 版面名称
      */
-    name: string
+    name: string;
     /**
      * 排序
      */
-    order: number
+    order: number;
     /**
      * 子版面
      */
-    boards: IBoard[]
+    boards: IBoard[];
   }
 }

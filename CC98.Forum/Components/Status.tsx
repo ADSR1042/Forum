@@ -1,8 +1,8 @@
-﻿import * as React from 'react';
-import LogOn from './LogOn';
-import { Link } from 'react-router-dom';
-import * as Utility from '../Utility';
-import DocumentTitle from './DocumentTitle';
+﻿import * as React from "react";
+import LogOn from "./LogOn";
+import { Link } from "react-router-dom";
+import * as Utility from "../Utility";
+import DocumentTitle from "./DocumentTitle";
 
 export const LogOut = () => (
   <div className="errorState">

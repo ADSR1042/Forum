@@ -23,7 +23,12 @@ type ownProps = {
   totalPage: number;
   hasTotal: boolean;
   isLoading: boolean;
-  getInfo: (page: number, order: number, forceLoad: boolean | undefined, keyword?: string) => void;
+  getInfo: (
+    page: number,
+    order: number,
+    forceLoad: boolean | undefined,
+    keyword?: string
+  ) => void;
   changePage: () => void;
 };
 
@@ -61,7 +66,12 @@ class Posts extends React.Component<Props> {
       this.props.match.params.order !== newProps.match.params.order
     ) {
       const curPage = parseInt(newProps.match.params.page) || 1;
-      this.props.getInfo(curPage, Number(newProps.match.params.order), true, this.keyword);
+      this.props.getInfo(
+        curPage,
+        Number(newProps.match.params.order),
+        true,
+        this.keyword
+      );
       window.scroll(0, 0);
     }
   }
@@ -72,7 +82,9 @@ class Posts extends React.Component<Props> {
     const keyword = this.getkeyword();
     // 手动输入企图搜索且排序时重定向
     if (order !== PostOrder.LastReply && keyword !== "") {
-      this.props.history.replace(`/usercenter/myfavorites/order/0/1?keyword=${keyword}`);
+      this.props.history.replace(
+        `/usercenter/myfavorites/order/0/1?keyword=${keyword}`
+      );
     }
     this.keyword = keyword;
     this.props.getInfo(curPage, order, true, this.keyword);
@@ -82,7 +94,9 @@ class Posts extends React.Component<Props> {
   changeOrderAndKeyword = (order: number, keyword: string = "") => {
     if (keyword) {
       this.props.getInfo(1, 0, true, keyword);
-      this.props.history.push(`/usercenter/myfavorites/order/0/1?keyword=${keyword}`);
+      this.props.history.push(
+        `/usercenter/myfavorites/order/0/1?keyword=${keyword}`
+      );
     } else {
       this.props.getInfo(1, order, true);
       this.keyword = "";
@@ -162,7 +176,9 @@ class Posts extends React.Component<Props> {
               </Button>
             }
           />
-          <div className="user-post-operator-tips">收藏搜索目前只能按照最后回复排序</div>
+          <div className="user-post-operator-tips">
+            收藏搜索目前只能按照最后回复排序
+          </div>
         </div>
         <hr />
         {this.props.currentUserFavoriteTopics.length === 0 ? (
@@ -198,7 +214,12 @@ function mapDispatch(dispatch: ThunkDispatch<RootState, void, RootAction>) {
     changePage: () => {
       dispatch(Actions.changeUserCenterPage("myfavoriteposts"));
     },
-    getInfo: (page: number, order: number, forceLoad: boolean | undefined, keyword = "") => {
+    getInfo: (
+      page: number,
+      order: number,
+      forceLoad: boolean | undefined,
+      keyword = ""
+    ) => {
       dispatch(getFavoritePosts(page, order, forceLoad, keyword));
     },
   };

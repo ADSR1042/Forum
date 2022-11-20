@@ -10,12 +10,9 @@ import * as Utility from "../../Utility";
  * @param page 当前页数
  * @author AsukaSong
  */
-export const getRecentTopics: ActionCreator<ThunkAction<
-  Promise<Action>,
-  RootState,
-  void,
-  RootAction
->> = (page: number) => async (dispatch, getState) => {
+export const getRecentTopics: ActionCreator<
+  ThunkAction<Promise<Action>, RootState, void, RootAction>
+> = (page: number) => async (dispatch, getState) => {
   try {
     dispatch(Actions.userCenterLoading());
     const recentPosts = getState().userInfo.recentTopics;
@@ -72,12 +69,9 @@ interface PostsAndTotal {
  * @param page 当前页数
  * @author AsukaSong
  */
-export const getRecentPosts: ActionCreator<ThunkAction<
-  Promise<Action>,
-  RootState,
-  void,
-  RootAction
->> = (page: number, ishot: number) => async (dispatch, getState) => {
+export const getRecentPosts: ActionCreator<
+  ThunkAction<Promise<Action>, RootState, void, RootAction>
+> = (page: number, ishot: number) => async (dispatch, getState) => {
   try {
     dispatch(Actions.userCenterLoading());
     const recentPosts = getState().userInfo.recentPosts;
@@ -89,8 +83,9 @@ export const getRecentPosts: ActionCreator<ThunkAction<
       return dispatch(Actions.userCenterLoaded());
     }
     // 请求11条信息
-    const url = `/me/${ishot === 0 ? "recent" : "hot"}-post?from=${(page - 1) *
-      10}&size=11`;
+    const url = `/me/${ishot === 0 ? "recent" : "hot"}-post?from=${
+      (page - 1) * 10
+    }&size=11`;
     const headers = await Utility.formAuthorizeHeader();
     const res = await Utility.cc98Fetch(url, { headers });
     if (res.status !== 200) {
@@ -127,12 +122,9 @@ export const getRecentPosts: ActionCreator<ThunkAction<
  * @param page 当前页数
  * @author AsukaSong
  */
-export const getHotPosts: ActionCreator<ThunkAction<
-  Promise<Action>,
-  RootState,
-  void,
-  RootAction
->> = (page: number) => async (dispatch, getState) => {
+export const getHotPosts: ActionCreator<
+  ThunkAction<Promise<Action>, RootState, void, RootAction>
+> = (page: number) => async (dispatch, getState) => {
   try {
     dispatch(Actions.userCenterLoading());
     const recentPosts = getState().userInfo.recentPosts;

@@ -37,7 +37,7 @@ export default class extends React.Component<{ data }> {
 
         {data.sofaCount > 20 && (
           <>
-            <div style={{ marginTop: '1.5rem' }}>你眼疾手快，</div>
+            <div style={{ marginTop: "1.5rem" }}>你眼疾手快，</div>
             <div>
               抢到了
               <span className="annual-review-page2-replyCount">
@@ -48,9 +48,9 @@ export default class extends React.Component<{ data }> {
           </>
         )}
 
-        {data.sofaCount <= 20 && data.sofaCount > 0 &&(
+        {data.sofaCount <= 20 && data.sofaCount > 0 && (
           <>
-            <div style={{ marginTop: '1.5rem' }}>你手速尚可，</div>
+            <div style={{ marginTop: "1.5rem" }}>你手速尚可，</div>
             <div>
               抢到了
               <span className="annual-review-page2-replyCount">
@@ -63,7 +63,7 @@ export default class extends React.Component<{ data }> {
 
         {data.sofaCount === 0 && (
           <>
-            <div style={{ marginTop: '1.5rem' }}>你佛系水帖，</div>
+            <div style={{ marginTop: "1.5rem" }}>你佛系水帖，</div>
             <div>从未抢到过沙发。</div>
           </>
         )}

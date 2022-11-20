@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Select } from 'antd';
-import { IBoard, ITagGroup } from '@cc98/api';
+import * as React from "react";
+import { Select } from "antd";
+import { IBoard, ITagGroup } from "@cc98/api";
 const Option = Select.Option;
 
 interface Props {
@@ -13,7 +13,7 @@ const Head: React.SFC<Props> = ({
   onChange,
   tags,
   handleTag1Change,
-  handleTag2Change
+  handleTag2Change,
 }) => (
   <div className="board-postItem-head">
     <div className="board-postItem-head-left">
@@ -36,7 +36,7 @@ const Head: React.SFC<Props> = ({
             onChange={handleTag1Change}
           >
             <Option value={-1}>全部</Option>
-            {tags[0].tags.map(item => (
+            {tags[0].tags.map((item) => (
               <Option value={item.id}>{item.name}</Option>
             ))}
           </Select>
@@ -48,7 +48,7 @@ const Head: React.SFC<Props> = ({
             onChange={handleTag2Change}
           >
             <Option value={-1}>全部</Option>
-            {tags[1].tags.map(item => (
+            {tags[1].tags.map((item) => (
               <Option value={item.id}>{item.name}</Option>
             ))}
           </Select>

@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { withRouter } from 'react-router-dom';
-import { RouteComponent } from '../../Components/RouteComponent';
-import { IBoard, ITopic, ITagGroup } from '@cc98/api';
+import * as React from "react";
+import { withRouter } from "react-router-dom";
+import { RouteComponent } from "../../Components/RouteComponent";
+import { IBoard, ITopic, ITagGroup } from "@cc98/api";
 import {
   getNormalTopics,
   getTopTopics,
   getBestTopics,
   getSaveTopics,
   getTags,
-  getTagTopics
-} from './action';
-import { Pagination, Spin } from 'antd';
-import List from './PostList';
-import Head from './ListHead';
-import Footer from './Footer'
+  getTagTopics,
+} from "./action";
+import { Pagination, Spin } from "antd";
+import List from "./PostList";
+import Head from "./ListHead";
+import Footer from "./Footer";
 
 interface Props {
   data: IBoard;
@@ -30,7 +30,7 @@ interface State {
   tag1: number;
   tag2: number;
 }
-interface Match { }
+interface Match {}
 class Body extends RouteComponent<Props, State, Match> {
   state = {
     list: [],
@@ -39,7 +39,7 @@ class Body extends RouteComponent<Props, State, Match> {
     topicCount: 0,
     tags: [],
     tag1: -1,
-    tag2: -1
+    tag2: -1,
   };
   async componentDidMount() {
     const { page, data } = this.props;
@@ -54,7 +54,7 @@ class Body extends RouteComponent<Props, State, Match> {
     this.setState({ tags });
   };
 
-  getTopics = async page => {
+  getTopics = async (page) => {
     const { data } = this.props;
     const { type, tag1, tag2 } = this.state;
     let list = [];
@@ -89,22 +89,22 @@ class Body extends RouteComponent<Props, State, Match> {
     this.setState({ topList });
   };
 
-  onChange = page => {
+  onChange = (page) => {
     this.getTopics(page);
     const pathname = window.location.pathname;
     // 首先判断是不是第一页
-    if (this.props.page === '1') {
+    if (this.props.page === "1") {
       // 判断url有没有/1
-      if (pathname.substr(pathname.lastIndexOf('/') + 1) === '1') {
+      if (pathname.substr(pathname.lastIndexOf("/") + 1) === "1") {
         this.props.history.push(
-          `${pathname.substr(0, pathname.lastIndexOf('/'))}/${page}`
+          `${pathname.substr(0, pathname.lastIndexOf("/"))}/${page}`
         );
       } else {
         this.props.history.push(`${pathname}/${page}`);
       }
     } else {
       this.props.history.push(
-        `${pathname.substr(0, pathname.lastIndexOf('/'))}/${page}`
+        `${pathname.substr(0, pathname.lastIndexOf("/"))}/${page}`
       );
     }
   };
@@ -127,42 +127,43 @@ class Body extends RouteComponent<Props, State, Match> {
     const { list, topList, topicCount, tags } = this.state;
     const page = parseInt(this.props.page);
 
-    const boardList = page === 1 ?[].concat(topList).concat(list): [].concat(list);
+    const boardList =
+      page === 1 ? [].concat(topList).concat(list) : [].concat(list);
 
     return boardList.length === 0 ? (
       <Spin size="large" />
     ) : (
-        <>
-          <div className="board-list-bar">
-            <Pagination
-              className="board-pagination"
-              showQuickJumper
-              current={page}
-              total={topicCount}
-              pageSize={20}
-              onChange={this.onChange}
-            />
-          </div>
-          <Head
-            onChange={type => this.changeType(type)}
-            tags={tags}
-            handleTag1Change={this.handleTag1Change}
-            handleTag2Change={this.handleTag2Change}
+      <>
+        <div className="board-list-bar">
+          <Pagination
+            className="board-pagination"
+            showQuickJumper
+            current={page}
+            total={topicCount}
+            pageSize={20}
+            onChange={this.onChange}
           />
-          <List list={boardList} />
-          <div className="board-list-bar">
-            <Pagination
-              className="board-pagination"
-              showQuickJumper
-              current={page}
-              pageSize={20}
-              total={topicCount}
-              onChange={this.onChange}
-            />
-          </div>
-          <Footer data={data} list={list} />
-        </>
-      );
+        </div>
+        <Head
+          onChange={(type) => this.changeType(type)}
+          tags={tags}
+          handleTag1Change={this.handleTag1Change}
+          handleTag2Change={this.handleTag2Change}
+        />
+        <List list={boardList} />
+        <div className="board-list-bar">
+          <Pagination
+            className="board-pagination"
+            showQuickJumper
+            current={page}
+            pageSize={20}
+            total={topicCount}
+            onChange={this.onChange}
+          />
+        </div>
+        <Footer data={data} list={list} />
+      </>
+    );
   }
 }
 export default withRouter(Body);

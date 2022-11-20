@@ -21,7 +21,10 @@ export class Message extends React.Component<{}, AppState> {
         <DocumentTitle title={`CC98论坛-我的消息`} />
         <div className="message">
           <div className="readAllMessage">
-            <button className="message-message-wPostBtn" onClick={Utility.readAll}>
+            <button
+              className="message-message-wPostBtn"
+              onClick={Utility.readAll}
+            >
               全部标为已读
             </button>
           </div>
@@ -32,7 +35,10 @@ export class Message extends React.Component<{}, AppState> {
                 <NavLink to="/message/response">
                   <div id="response" className="nav-div">
                     回复我的
-                    <div className="message-counterNav displaynone" id="unreadCount-replyCount1">
+                    <div
+                      className="message-counterNav displaynone"
+                      id="unreadCount-replyCount1"
+                    >
                       {unreadCount.replyCount}
                     </div>
                   </div>
@@ -41,7 +47,10 @@ export class Message extends React.Component<{}, AppState> {
                 <NavLink to="/message/attme">
                   <div id="attme" className="nav-div">
                     @ 我的
-                    <div className="message-counterNav displaynone" id="unreadCount-atCount1">
+                    <div
+                      className="message-counterNav displaynone"
+                      id="unreadCount-atCount1"
+                    >
                       {unreadCount.atCount}
                     </div>
                   </div>
@@ -50,7 +59,10 @@ export class Message extends React.Component<{}, AppState> {
                 <NavLink to="/message/system">
                   <div id="system" className="nav-div">
                     系统通知
-                    <div className="message-counterNav displaynone" id="unreadCount-systemCount1">
+                    <div
+                      className="message-counterNav displaynone"
+                      id="unreadCount-systemCount1"
+                    >
                       {unreadCount.systemCount}
                     </div>
                   </div>
@@ -59,7 +71,10 @@ export class Message extends React.Component<{}, AppState> {
                 <NavLink to="/message/message">
                   <div id="message" className="nav-div">
                     我的私信
-                    <div className="message-counterNav displaynone" id="unreadCount-messageCount1">
+                    <div
+                      className="message-counterNav displaynone"
+                      id="unreadCount-messageCount1"
+                    >
                       {unreadCount.messageCount}
                     </div>
                   </div>
@@ -72,10 +87,17 @@ export class Message extends React.Component<{}, AppState> {
                 </NavLink>
               </div>
               <Route exact path="/message" component={MessageResponse}></Route>
-              <Route path="/message/response/:page?" exact component={MessageResponse} />
+              <Route
+                path="/message/response/:page?"
+                exact
+                component={MessageResponse}
+              />
               <Route path="/message/attme/:page?" component={MessageAttme} />
               <Route path="/message/system/:page?" component={MessageSystem} />
-              <Route path="/message/message/:page?" component={MessageMessage} />
+              <Route
+                path="/message/message/:page?"
+                component={MessageMessage}
+              />
               <Route path="/message/setting" component={MessageSetting} />
             </div>
           </Router>

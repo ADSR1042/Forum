@@ -1,2 +1,2 @@
-export * from './UserCenter';
-export * from './Message';
+export * from "./UserCenter";
+export * from "./Message";

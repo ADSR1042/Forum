@@ -1,20 +1,14 @@
-import { UserInfo } from '../../States/AppState';
+import { UserInfo } from "../../States/AppState";
 
 import {
-    getUserInfo as getIndexedDBUserInfo,
-    addUserInfo
-} from '../../IndexedDB/UserStorage';
+  getUserInfo as getIndexedDBUserInfo,
+  addUserInfo,
+} from "../../IndexedDB/UserStorage";
 
-import {
-    getLocalStorage,
-    setLocalStorage
-} from '../storageUtility';
+import { getLocalStorage, setLocalStorage } from "../storageUtility";
 
-import {
-    formAuthorizeHeader,
-    cc98Fetch
-} from '../fetchUtility';
-import { shouldUseIndexedDb } from '../../config';
+import { formAuthorizeHeader, cc98Fetch } from "../fetchUtility";
+import { shouldUseIndexedDb } from "../../config";
 
 /**
  * 使用用户id查询用户信息
@@ -31,33 +25,36 @@ export async function getUserInfo(userId: number): Promise<UserInfo>;
  */
 export async function getUserInfo(userName: string): Promise<UserInfo>;
 export async function getUserInfo(key: number | string): Promise<UserInfo> {
-    let userInfo: UserInfo;
-    try {
-        // 在缓存中查询
-        if(shouldUseIndexedDb) {
-            userInfo = await getIndexedDBUserInfo(key);
-            if(userInfo) return userInfo;
-        } else {
-            userInfo = getLocalStorage(typeof key === 'number' ? `userId_${key}`: `userName_${key}`);
-            if(userInfo) return userInfo;
-        }
-
-        // api请求
-        const url = typeof key === 'number' ? `/user/${key}` : `/user/name/${encodeURIComponent(key)}`;
-        let headers = await formAuthorizeHeader();
-        let res = await cc98Fetch(url, { headers });
-        userInfo = await res.json();
-
-        //缓存
-        if(shouldUseIndexedDb) {
-            addUserInfo(userInfo);
-        } else {
-            setLocalStorage(`userId_${userInfo.id}`, userInfo, 3600);
-            setLocalStorage(`userName_${userInfo.name}`, userInfo, 3600);
-        }
-
-        return userInfo;
-    } catch(e) {
-
+  let userInfo: UserInfo;
+  try {
+    // 在缓存中查询
+    if (shouldUseIndexedDb) {
+      userInfo = await getIndexedDBUserInfo(key);
+      if (userInfo) return userInfo;
+    } else {
+      userInfo = getLocalStorage(
+        typeof key === "number" ? `userId_${key}` : `userName_${key}`
+      );
+      if (userInfo) return userInfo;
     }
+
+    // api请求
+    const url =
+      typeof key === "number"
+        ? `/user/${key}`
+        : `/user/name/${encodeURIComponent(key)}`;
+    let headers = await formAuthorizeHeader();
+    let res = await cc98Fetch(url, { headers });
+    userInfo = await res.json();
+
+    //缓存
+    if (shouldUseIndexedDb) {
+      addUserInfo(userInfo);
+    } else {
+      setLocalStorage(`userId_${userInfo.id}`, userInfo, 3600);
+      setLocalStorage(`userName_${userInfo.name}`, userInfo, 3600);
+    }
+
+    return userInfo;
+  } catch (e) {}
 }

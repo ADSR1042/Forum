@@ -98,7 +98,6 @@ input[type="radio"] {
 }
 
 .urlStyle {
-
   /* 未访问的链接 */
   &:link {
     color: $color-url;
@@ -183,7 +182,7 @@ input[type="radio"] {
 
 .mde-preview {
   //去掉暗色主题md的白色背景
-  //background-color: #fff;   
+  //background-color: #fff;
 }
 
 .react-mde .grip {
@@ -284,7 +283,8 @@ input[type="radio"] {
   font-size: 1rem;
 }
 
-.authorImg {}
+.authorImg {
+}
 
 .authorImg img {
   margin-left: 20px;
@@ -1369,7 +1369,8 @@ a {
   background-color: $theme_color_main;
 }
 
-.listTitle {}
+.listTitle {
+}
 
 .boardName2 {
   font-size: 0.88rem;
@@ -2595,7 +2596,7 @@ a {
   flex-direction: column;
   margin-bottom: 6rem;
 
-  &>div {
+  & > div {
     margin-top: 30px;
     background-color: white;
     min-width: 1140px;
@@ -2603,24 +2604,24 @@ a {
     border: 1px solid rgb(204, 204, 204);
     height: 567px;
 
-    &>img {
+    & > img {
       margin: 30px;
     }
 
-    &>div {
+    & > div {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       margin-top: 50px;
 
-      &>img {
+      & > img {
         width: 123px;
         height: 26px;
         margin-right: 200px;
       }
 
-      &>p {
+      & > p {
         margin-right: 200px;
         font-size: 12px;
       }
@@ -3259,7 +3260,8 @@ a {
   cursor: pointer;
 }
 
-.boardListHead:hover {}
+.boardListHead:hover {
+}
 
 //配色方案
 variable {
@@ -3367,7 +3369,8 @@ variable {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: block;
@@ -3399,7 +3402,8 @@ variable {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: block;
@@ -3411,8 +3415,10 @@ variable {
 .react-bootstrap-option:focus {
   border-color: #66afe9;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075), 0px 0px 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075),
+    0px 0px 8px rgba(102, 175, 233, 0.6);
 }
 
 .react-bootstrap-option::after {
@@ -3455,7 +3461,8 @@ variable {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: block;
@@ -3474,7 +3481,8 @@ variable {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: block;
@@ -3596,7 +3604,10 @@ variable {
   }
 }
 
-.mde-header ul.mde-header-group li.mde-header-item button.tooltipped:hover::before {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  button.tooltipped:hover::before {
   animation-name: tooltip-appear;
   animation-duration: 0.2s;
   animation-delay: 0.5s;
@@ -3617,7 +3628,10 @@ variable {
   border-top-color: rgba(0, 0, 0, 0.8);
 }
 
-.mde-header ul.mde-header-group li.mde-header-item button.tooltipped:hover::after {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  button.tooltipped:hover::after {
   animation-name: tooltip-appear;
   animation-duration: 0.2s;
   animation-delay: 0.5s;
@@ -3657,12 +3671,23 @@ variable {
   display: block;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button {
   display: block;
   height: auto;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button
+  p {
   display: block;
   margin: 0;
   padding: 0;
@@ -3673,27 +3698,60 @@ variable {
   text-align: left;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p:hover {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button
+  p:hover {
   color: #4078c0;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p.header-1 {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button
+  p.header-1 {
   font-size: 20px;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p.header-2 {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button
+  p.header-2 {
   font-size: 18px;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p.header-3 {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button
+  p.header-3 {
   font-size: 14px;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown li button p.header-4 {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown
+  li
+  button
+  p.header-4 {
   font-size: 12px;
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::before {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown::before {
   position: absolute;
   content: "";
   width: 0;
@@ -3705,7 +3763,10 @@ variable {
   transform: translateX(50%);
 }
 
-.mde-header ul.mde-header-group li.mde-header-item ul.react-mde-dropdown::after {
+.mde-header
+  ul.mde-header-group
+  li.mde-header-item
+  ul.react-mde-dropdown::after {
   position: absolute;
   content: "";
   width: 0;
@@ -3781,11 +3842,11 @@ variable {
   border-left: 0.25em solid #ddd;
 }
 
-.mde-preview .mde-preview-content blockquote> :first-child {
+.mde-preview .mde-preview-content blockquote > :first-child {
   margin-top: 0;
 }
 
-.mde-preview .mde-preview-content blockquote> :last-child {
+.mde-preview .mde-preview-content blockquote > :last-child {
   margin-bottom: 0;
 }
 
@@ -3828,7 +3889,7 @@ variable {
   content: none;
 }
 
-.mde-preview .mde-preview-content pre>code {
+.mde-preview .mde-preview-content pre > code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -3847,11 +3908,11 @@ variable {
   text-decoration: underline;
 }
 
-.mde-preview .mde-preview-content>*:first-child {
+.mde-preview .mde-preview-content > *:first-child {
   margin-top: 0 !important;
 }
 
-.mde-preview .mde-preview-content>*:last-child {
+.mde-preview .mde-preview-content > *:last-child {
   margin-bottom: 0 !important;
 }
 

@@ -1,4 +1,4 @@
-declare module '@cc98/api' {
+declare module "@cc98/api" {
   export interface IBoard {
     /**
      * 版面id

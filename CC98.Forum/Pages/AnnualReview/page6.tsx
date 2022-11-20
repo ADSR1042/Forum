@@ -8,10 +8,24 @@ export default class extends React.Component<{ data }> {
     return (
       <div className="annual-review-2020-page annual-review-2020-page-bg-rabbit">
         <div>你获得了以下成就：</div>
-        <div style={{ display: "flex", justifyContent: "space-around",marginTop:"0.5rem" ,marginLeft: '1rem', marginRight: '1rem', flexWrap: 'wrap'}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            marginTop: "0.5rem",
+            marginLeft: "1rem",
+            marginRight: "1rem",
+            flexWrap: "wrap",
+          }}
+        >
           {achievements.map((item, index) => (
             <Tag
-              style={{ fontSize: "2vh", height: "3vh", lineHeight: "2.5vh", marginBottom: '0.5rem' }}
+              style={{
+                fontSize: "2vh",
+                height: "3vh",
+                lineHeight: "2.5vh",
+                marginBottom: "0.5rem",
+              }}
               color={colors[index % 4]}
             >
               {item}
@@ -20,9 +34,17 @@ export default class extends React.Component<{ data }> {
         </div>
         <div style={{ marginTop: "2rem" }}>在新春佳节到来之际，</div>
         <div>CC98论坛祝你：</div>
-        <div><span className="annual-review-page6-congratulation">身体健康</span></div>
-        <div><span className="annual-review-page6-congratulation">学习生活顺利</span></div>
-        <div><span className="annual-review-page6-congratulation">幸福2022</span></div>
+        <div>
+          <span className="annual-review-page6-congratulation">身体健康</span>
+        </div>
+        <div>
+          <span className="annual-review-page6-congratulation">
+            学习生活顺利
+          </span>
+        </div>
+        <div>
+          <span className="annual-review-page6-congratulation">幸福2022</span>
+        </div>
       </div>
     );
   }

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import * as Utility from '../../Utility';
-import { Collapse, Button, Divider, Tag, Input, Modal } from 'antd';
-import { IBoard } from '@cc98/api';
-import { UbbContainer } from '../../Components/UbbContainer';
-import { UbbCodeOptions } from '../../Ubb/UbbCodeExtension';
-import { editBigPaper as eBP } from './action';
+import * as React from "react";
+import * as Utility from "../../Utility";
+import { Collapse, Button, Divider, Tag, Input, Modal } from "antd";
+import { IBoard } from "@cc98/api";
+import { UbbContainer } from "../../Components/UbbContainer";
+import { UbbCodeOptions } from "../../Ubb/UbbCodeExtension";
+import { editBigPaper as eBP } from "./action";
 
 const Panel = Collapse.Panel;
 const TextArea = Input.TextArea;
@@ -21,12 +21,12 @@ interface State {
 }
 
 const customPanelStyle = {
-  background: '#f7f7f7',
+  background: "#f7f7f7",
   borderRadius: 4,
   marginBottom: 24,
   border: 0,
-  overflow: 'hidden',
-  width: '100%'
+  overflow: "hidden",
+  width: "100%",
 };
 
 export default class extends React.Component<Props, State> {
@@ -34,7 +34,7 @@ export default class extends React.Component<Props, State> {
     isFollow: Utility.isFollowThisBoard(this.props.data.id),
     loading: false,
     editVisible: false,
-    content: this.props.data.bigPaper
+    content: this.props.data.bigPaper,
   };
   onError(e) {
     e.preventDefault();
@@ -45,7 +45,7 @@ export default class extends React.Component<Props, State> {
     const userName = encodeURIComponent(item.toString());
     const webUrl = `/user/name/${userName}`;
     return (
-      <div style={{ marginRight: '10px', fontSize: '0.75rem' }}>
+      <div style={{ marginRight: "10px", fontSize: "0.75rem" }}>
         <a href={webUrl}>{name}</a>
       </div>
     );
@@ -71,7 +71,7 @@ export default class extends React.Component<Props, State> {
     const url = `/static/images/_${data.name}.png`;
     const isMaster = Utility.isMaster(data.boardMasters);
     const shortHand = (
-      <div className="row" style={{ height: '4rem' }}>
+      <div className="row" style={{ height: "4rem" }}>
         <div>
           <img className="board-avatar" onError={this.onError} src={url} />
         </div>
@@ -82,7 +82,7 @@ export default class extends React.Component<Props, State> {
 
         <div
           className="column"
-          style={{ marginLeft: '1rem', marginRight: '1rem' }}
+          style={{ marginLeft: "1rem", marginRight: "1rem" }}
         >
           <div>版面简介：{data.description}</div>
           <div className="row">
@@ -93,30 +93,30 @@ export default class extends React.Component<Props, State> {
         <div
           className="row"
           style={{
-            marginRight: '1rem',
+            marginRight: "1rem",
             flexGrow: 2,
-            justifyContent: 'flex-end',
-            height: '100%'
+            justifyContent: "flex-end",
+            height: "100%",
           }}
         >
           <div
             className="column"
             style={{
-              marginLeft: '1rem',
-              marginRight: '1rem',
-              height: '100%',
-              justifyContent: 'space-around'
+              marginLeft: "1rem",
+              marginRight: "1rem",
+              height: "100%",
+              justifyContent: "space-around",
             }}
           >
             <div className="row">
               <Tag
                 color="grey"
                 style={{
-                  width: '5rem',
-                  textAlign: 'center',
+                  width: "5rem",
+                  textAlign: "center",
                   marginRight: 0,
                   borderTopRightRadius: 0,
-                  borderBottomRightRadius: 0
+                  borderBottomRightRadius: 0,
                 }}
               >
                 今日贴数
@@ -124,12 +124,12 @@ export default class extends React.Component<Props, State> {
               <Tag
                 className="board-head-information"
                 style={{
-                  width: '5rem',
-                  textAlign: 'center',
+                  width: "5rem",
+                  textAlign: "center",
                   marginRight: 0,
                   borderLeft: 0,
                   borderTopLeftRadius: 0,
-                  borderBottomLeftRadius: 0
+                  borderBottomLeftRadius: 0,
                 }}
               >
                 {data.todayCount}
@@ -139,12 +139,12 @@ export default class extends React.Component<Props, State> {
               <Tag
                 color="grey"
                 style={{
-                  width: '5rem',
-                  textAlign: 'center',
+                  width: "5rem",
+                  textAlign: "center",
                   marginRight: 0,
 
                   borderTopRightRadius: 0,
-                  borderBottomRightRadius: 0
+                  borderBottomRightRadius: 0,
                 }}
               >
                 总主题数
@@ -152,13 +152,13 @@ export default class extends React.Component<Props, State> {
               <Tag
                 className="board-head-information"
                 style={{
-                  width: '5rem',
-                  textAlign: 'center',
+                  width: "5rem",
+                  textAlign: "center",
                   marginRight: 0,
 
                   borderLeft: 0,
                   borderTopLeftRadius: 0,
-                  borderBottomLeftRadius: 0
+                  borderBottomLeftRadius: 0,
                 }}
               >
                 {data.topicCount}
@@ -169,11 +169,11 @@ export default class extends React.Component<Props, State> {
             loading={loading}
             onClick={isFollow ? () => this.unfollow() : () => this.follow()}
           >
-            {isFollow ? '取关' : '关注'}
+            {isFollow ? "取关" : "关注"}
           </Button>
           {isMaster && (
             <Button
-              style={{ marginLeft: '0.5rem' }}
+              style={{ marginLeft: "0.5rem" }}
               onClick={() => this.setState({ editVisible: true })}
             >
               编辑
@@ -183,19 +183,19 @@ export default class extends React.Component<Props, State> {
       </div>
     );
     return (
-      <div style={{ width: '100%' }}>
+      <div style={{ width: "100%" }}>
         <Modal
           title="编辑大字报"
           visible={editVisible}
           onOk={() => this.editBigPaper()}
           onCancel={() => this.setState({ editVisible: false })}
-          width={'50rem'}
+          width={"50rem"}
         >
           支持UBB代码
           <TextArea
             rows={6}
             defaultValue={data.bigPaper}
-            onChange={v => this.setState({ content: v.target.value })}
+            onChange={(v) => this.setState({ content: v.target.value })}
           />
           <UbbContainer
             code={content}
@@ -205,7 +205,7 @@ export default class extends React.Component<Props, State> {
         <Collapse
           className="board-bigpaper"
           bordered={false}
-          defaultActiveKey={isFirstPage ? ['1'] : []}
+          defaultActiveKey={isFirstPage ? ["1"] : []}
         >
           <Panel
             key="1"
@@ -213,11 +213,16 @@ export default class extends React.Component<Props, State> {
             header={shortHand}
             style={customPanelStyle}
           >
-            {data.bigPaper && <> <Divider />
-              <UbbContainer
-                code={data.bigPaper}
-                options={{ ...new UbbCodeOptions(), allowToolbox: false }}
-              /></>}
+            {data.bigPaper && (
+              <>
+                {" "}
+                <Divider />
+                <UbbContainer
+                  code={data.bigPaper}
+                  options={{ ...new UbbCodeOptions(), allowToolbox: false }}
+                />
+              </>
+            )}
           </Panel>
         </Collapse>
       </div>

@@ -1,45 +1,45 @@
-declare module '@cc98/api' {
+declare module "@cc98/api" {
   export interface IHotTopic {
     /**
      * 作者名
      */
-    authorName: string
+    authorName: string;
     /**
      * 版面 ID
      */
-    boardId: number
+    boardId: number;
     /**
      * 版面名
      */
-    boardName: string
+    boardName: string;
     /**
      * 创建时间
      */
-    createTime: string
+    createTime: string;
     /**
      * 点击数
      */
-    hitCount: number
+    hitCount: number;
     /**
      * ID
      */
-    id: number
+    id: number;
     /**
      * 参与者数量
      */
-    participantCount: number
+    participantCount: number;
     /**
      * 回复数
      */
-    replyCount: number
+    replyCount: number;
     /**
      * 标题
      */
-    title: string
+    title: string;
     /**
      * 帖子类型
      * 0 普通帖子  1 校园活动  2 学术通知
      */
-    type: number
+    type: number;
   }
 }

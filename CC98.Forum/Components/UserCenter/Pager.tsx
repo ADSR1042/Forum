@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 export default class extends React.Component<UserCenterPageCountProps> {
   getTargetUrl = (page: number) =>
-    `${this.props.href}${page}${this.props.keyword ? `?keyword=${this.props.keyword}` : ""}`;
+    `${this.props.href}${page}${
+      this.props.keyword ? `?keyword=${this.props.keyword}` : ""
+    }`;
   render() {
     let elements = [],
       i;
@@ -143,7 +145,10 @@ export default class extends React.Component<UserCenterPageCountProps> {
         </li>
       );
     }
-    if (!this.props.hasTotal && this.props.currentPage != this.props.totalPage) {
+    if (
+      !this.props.hasTotal &&
+      this.props.currentPage != this.props.totalPage
+    ) {
       elements.push(
         <li key="after">
           <button disabled>···</button>

@@ -1,26 +1,30 @@
-﻿// A '.tsx' file enables JSX support in the TypeScript compiler, 
+﻿// A '.tsx' file enables JSX support in the TypeScript compiler,
 // for more information see the following page on the TypeScript wiki:
 // https://github.com/Microsoft/TypeScript/wiki/JSX
 
-import * as React from 'react';
-import * as Ubb from './Core';
+import * as React from "react";
+import * as Ubb from "./Core";
 declare var require: any;
-var APlayer = require('aplayer');
+var APlayer = require("aplayer");
 
 /**
  * 处理 [mp3] 标签的处理器。
  */
 export class AudioTagHandler extends Ubb.TextTagHandler {
   get supportedTagNames(): string[] {
-    return ['mp3', 'audio'];
+    return ["mp3", "audio"];
   }
 
-  execCore(innerContent: string, tagData: Ubb.UbbTagData, context: Ubb.UbbCodeContext): React.ReactNode {
+  execCore(
+    innerContent: string,
+    tagData: Ubb.UbbTagData,
+    context: Ubb.UbbCodeContext
+  ): React.ReactNode {
     //不允许显示媒体内容
     if (context.options.allowMediaContent === false) {
       return innerContent;
     }
-    const title = tagData.value('title');
+    const title = tagData.value("title");
     return <AudioComponent src={innerContent} title={title} />;
   }
 }
@@ -31,8 +35,8 @@ interface IProps {
    */
   src: string;
   /**
-  * 音频文件标题
-  */
+   * 音频文件标题
+   */
   title: string | null;
 }
 class AudioComponent extends React.Component<IProps> {
@@ -52,17 +56,18 @@ class AudioComponent extends React.Component<IProps> {
       this.ap = new APlayer({
         element: this.div,
         autoplay: false,
-        preload: 'metadata',
+        preload: "metadata",
         music: {
           url: encodeURI(this.props.src),
-          title: this.props.title ? this.props.title : encodeURI(this.props.src),
-          author: '',
-          pic: '/static/images/audio_cover.png'
-        }
+          title: this.props.title
+            ? this.props.title
+            : encodeURI(this.props.src),
+          author: "",
+          pic: "/static/images/audio_cover.png",
+        },
       });
       //去掉文件名后面的横杠
-      this.div.getElementsByClassName('aplayer-author')[0].innerHTML = '';
-
+      this.div.getElementsByClassName("aplayer-author")[0].innerHTML = "";
     } catch (e) {
       // IE 11 下会抛一个 InvalidStateError 的错误，忽略
     }
@@ -74,9 +79,12 @@ class AudioComponent extends React.Component<IProps> {
 
   render() {
     //重置继承自article的whiteSpace
-    return <div className="aplayer"
-      style={{ whiteSpace: 'normal', width: '30rem' }}
-      ref={it => this.div = it}>
-    </div>;
+    return (
+      <div
+        className="aplayer"
+        style={{ whiteSpace: "normal", width: "30rem" }}
+        ref={(it) => (this.div = it)}
+      ></div>
+    );
   }
 }

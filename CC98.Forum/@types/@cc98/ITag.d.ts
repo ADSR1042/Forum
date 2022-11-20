@@ -1,11 +1,11 @@
-declare module '@cc98/api' {
+declare module "@cc98/api" {
   export interface ITag {
-    id: number
-    name: string
+    id: number;
+    name: string;
   }
 
   export interface ITagGroup {
-    layer: number
-    tags: ITag[]
+    layer: number;
+    tags: ITag[];
   }
 }

@@ -3,7 +3,10 @@ import * as Utility from "../Utility";
 import { UbbEditor } from "./UbbEditor";
 import { withRouter } from "react-router-dom";
 import * as moment from "moment";
-export class Signin extends React.Component<{ history }, { signinInfo; content }> {
+export class Signin extends React.Component<
+  { history },
+  { signinInfo; content }
+> {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
@@ -33,7 +36,11 @@ export class Signin extends React.Component<{ history }, { signinInfo; content }
     this.setState({ content: "" });
     //设定已签到状态和有效期
     let userInfo = Utility.getLocalStorage("userInfo");
-    let workTime = (new Date(new Date().setHours(0, 0, 0, 0)).getTime() + 86400000 - new Date().getTime()) / 1000;
+    let workTime =
+      (new Date(new Date().setHours(0, 0, 0, 0)).getTime() +
+        86400000 -
+        new Date().getTime()) /
+      1000;
     Utility.setLocalStorage(`signin_${userInfo.id}`, true, workTime);
   }
   render() {
@@ -43,13 +50,20 @@ export class Signin extends React.Component<{ history }, { signinInfo; content }
     if (this.state.signinInfo.hasSignedInToday) {
       //设定已签到状态和有效期
       let userInfo = Utility.getLocalStorage("userInfo");
-      let workTime = (new Date(new Date().setHours(0, 0, 0, 0)).getTime() + 86400000 - new Date().getTime()) / 1000;
+      let workTime =
+        (new Date(new Date().setHours(0, 0, 0, 0)).getTime() +
+          86400000 -
+          new Date().getTime()) /
+        1000;
       Utility.setLocalStorage(`signin_${userInfo.id}`, true, workTime);
       //设定已签到信息
       info = (
         <div>
           <div className="row" style={{ justifyContent: "center" }}>
-            你上次的签到日期是{moment(this.state.signinInfo.lastSignInTime).format("YYYY-MM-DD HH:mm:ss")}
+            你上次的签到日期是
+            {moment(this.state.signinInfo.lastSignInTime).format(
+              "YYYY-MM-DD HH:mm:ss"
+            )}
           </div>
           <div className="row" style={{ justifyContent: "center" }}>
             你已经连续签到了{this.state.signinInfo.lastSignInCount}天
@@ -64,8 +78,15 @@ export class Signin extends React.Component<{ history }, { signinInfo; content }
         <div className="column">
           <div className="row">你今天还未签到</div>
           <div style={{ marginTop: "1.5rem" }}>
-            <UbbEditor update={this.update} value={this.state.content} option={{ height: 10 }} />
-            <div className="row" style={{ justifyContent: "center", marginBottom: "1.25rem " }}>
+            <UbbEditor
+              update={this.update}
+              value={this.state.content}
+              option={{ height: 10 }}
+            />
+            <div
+              className="row"
+              style={{ justifyContent: "center", marginBottom: "1.25rem " }}
+            >
               <div
                 id="post-topic-button"
                 onClick={this.signin}
@@ -87,7 +108,10 @@ export class Signin extends React.Component<{ history }, { signinInfo; content }
     }
     return (
       <div className="sign-in">
-        <div className="row" style={{ width: "100%", justifyContent: "center" }}>
+        <div
+          className="row"
+          style={{ width: "100%", justifyContent: "center" }}
+        >
           论坛签到
         </div>
         <div className="row">
